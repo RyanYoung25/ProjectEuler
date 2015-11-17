@@ -4,11 +4,6 @@ ifPrime n = (all (\a -> n `rem` a /= 0) [2..lim])
     where
         lim = (ceiling (sqrt (fromIntegral n)))
 
---Find the nth prime number
-
---findPrime :: Int -> Int
---findPrime n = takeWhile (length < 100001) (filter ifPrime [2..])
-
 --Recursively find prime
 -- Takes the current number, the number of primes to find, the current number of primes we found
 findPrime' :: Int -> Int -> Int -> Int
