@@ -12,4 +12,6 @@ ifPrime n = (all (\a -> n `rem` a /= 0) [2..lim])
 findFactorList :: Int -> [Int]
 findFactorList n = filter (\a -> n `rem` a == 0) [1..n]
 
+
+--Found it in way too long of a time
 main=print (maximum (filter ifPrime (findFactorList 600851475143)))

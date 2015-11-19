@@ -1,6 +1,9 @@
---function to return if a number is evenly divisible by all numbers 1..20
-divisBy :: Int -> Bool
-divisBy n = all evenDivs [1..20]
-    where evenDivs a = (n `rem` a) == 0
+--Create a function to find the lcd between two numbers. 
+lcm' :: Int -> Int -> Int
+lcm' a b = head (take 1 (dropWhile isNotMultiple [minVal..maxVal]))
+    where
+        minVal = max a b
+        maxVal = a*b
+        isNotMultiple n = (( n `rem` a) /= 0) || ((n `rem` b) /= 0)
 
-main=print (takeWhile (not . divisBy) [1..])
+main=print (foldl lcm' 1 [1..20]) 
