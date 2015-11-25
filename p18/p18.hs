@@ -23,7 +23,10 @@ findMaxPath tree = findMaxPath' maxIndex smallerTree ++ [maxVal]
         maxVal = maximum layer
         maxIndex = maybe 0 id (elemIndex maxVal layer)
 
---Recursively do the thing
+--Recursively decend depth first and prune kf possible. 
+depthFirstMaxSum :: [[Int]] -> Int -> Int
+depthFirstMaxSum (xs:[]) index = xs !! index
+depthFirstMaxSum (x:xs) index = (x !! index) + (max (depthFirstMaxSum xs index) (depthFirstMaxSum xs (index + 1)))
 
 bigTree = 
     [[75],
@@ -42,4 +45,5 @@ bigTree =
     [63, 66, 04, 68, 89, 53, 67, 30, 73, 16, 69, 87, 40, 31],
     [04, 62, 98, 27, 23, 09, 70, 98, 73, 93, 38, 53, 60, 04, 23]]
 
-main = print (sum (findMaxPath bigTree))
+
+main = print (depthFirstMaxSum bigTree 0)
